@@ -8,12 +8,13 @@ class App < Sinatra::Base
   end
 
   get '/' do
+    @session = session
     erb :index
   end
 
   post '/checkout' do
     binding.pry
-    @session = session[params.key.first] = params[:item]
+    @session = session[params.first.first] = params[:item]
     binding.pry
   end
 end
